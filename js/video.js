@@ -19,31 +19,29 @@ window.addEventListener("load", function() {
 	document.querySelector("#pause").addEventListener("click", function() {
 		console.log("Pause video");
 		vid.pause();
-		vid.volume = 0;
-		document.querySelector("#volume").textContent = vid.volume + "%";
 	});
 
 	document.querySelector("#slower").addEventListener("click", function() {
 		console.log("Slow video");
-		vid.playbackRate = vid.playbackRate * 0.9;
-		console.log(vid.playbackRate) = vid.playbackRate;
+		vid.playbackRate -= vid.playbackRate * 0.1;
+		console.log(vid.playbackRate);
 	});
 
 	document.querySelector("#faster").addEventListener("click", function() {
 		console.log("Speed up video");
-		vid.playbackRate = vid.playbackRate / 0.9;
-		console.log(vid.playbackRate) = vid.playbackRate;
+		vid.playbackRate += vid.playbackRate * 0.1;
+		console.log(vid.playbackRate);
 	});
 
 	document.querySelector("#skip").addEventListener("click", function() {
 		console.log("Skip forward 10 seconds");
 		if (vid.currentTime + 10 <= vid.duration) {
-			vid.currentTime = vid.currentTime + 10;
-			console.log(vid.currentTime) = vid.currentTime + 10;
+			vid.currentTime += 10;
+			console.log(vid.currentTime);
 		}
 		else {
 			vid.currentTime = 0;
-			console.log(vid.currentTime) = 0;
+			console.log(vid.currentTime);
 		}
 		
 	});
@@ -51,8 +49,24 @@ window.addEventListener("load", function() {
 	document.querySelector("#mute").addEventListener("click", function() {
 		console.log("Mute or unmute");
 		if (vid.muted) {
-			vid.volume = 100;
+			vid.muted = false;
+			this.textContent = 'Mute';
 		  } else {
-			vid.volume = 0;
+			vid.muted = true;
+			this.textContent = 'Unmute';
 		  }
 	});
+
+	let display = document.querySelector("#volume");
+	slider.addEventListener("input", function() {
+		vid.volume = this.value / 100;
+        display.innerHTML = this.value + "%";
+	});
+
+	document.querySelector("#vintage").addEventListener("click", function() {
+	        vid.classList.add("oldSchool");
+	 });
+	
+    document.querySelector("#orig").addEventListener("click", function() {
+		vid.classList.remove("oldSchool");
+    });
