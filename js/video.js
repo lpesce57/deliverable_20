@@ -25,25 +25,25 @@ window.addEventListener("load", function() {
 
 	document.querySelector("#slower").addEventListener("click", function() {
 		console.log("Slow video");
-		vid.playbackRate = vid.playbackRate - .1;
-		console.playbackRate = vid.playbackRate;
+		vid.playbackRate = vid.playbackRate * 0.9;
+		console.log(vid.playbackRate) = vid.playbackRate;
 	});
 
 	document.querySelector("#faster").addEventListener("click", function() {
 		console.log("Speed up video");
-		vid.playbackRate = vid.playbackRate + .1;
-		console.playbackRate = vid.playbackRate;
+		vid.playbackRate = vid.playbackRate / 0.9;
+		console.log(vid.playbackRate) = vid.playbackRate;
 	});
 
 	document.querySelector("#skip").addEventListener("click", function() {
 		console.log("Skip forward 10 seconds");
 		if (vid.currentTime + 10 <= vid.duration) {
 			vid.currentTime = vid.currentTime + 10;
-			console.currentTime = vid.currentTime + 10;
+			console.log(vid.currentTime) = vid.currentTime + 10;
 		}
 		else {
 			vid.currentTime = 0;
-			console.currentTime = 0;
+			console.log(vid.currentTime) = 0;
 		}
 		
 	});
